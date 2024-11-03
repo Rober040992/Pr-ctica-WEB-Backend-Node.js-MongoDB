@@ -3,9 +3,13 @@ import express from 'express'
 import createError from 'http-errors'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
+import connectMongoose from './config/mongooseConfig.js'
 
 import indexRouter from './routes/index.js'
 import usersRouter from './routes/users.js'
+
+await connectMongoose()
+console.log('Conectado a MongoDB.')
 
 const app = express()
 

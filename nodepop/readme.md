@@ -21,3 +21,6 @@
 - **cross-env installed**
 - use npm run dev; Ejecuta la aplicación en el puerto 4444 sin mensajes de depuración adicionales.
 - use npm debug;  Ejecuta la aplicación en el puerto 5555 con mensajes de depuración activados.
+
+- npm i mongoose
+- config creado e importado en app con su await correspondiente
