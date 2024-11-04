@@ -1,6 +1,6 @@
 // models/Product.js
-import mongoose from 'mongoose';
-
+import mongoose, { Schema } from 'mongoose'
+//create a schema model
 const productSchema = new Schema({
     name: { type: String, unique: true },
     price: { type: Number, min:0.1 },

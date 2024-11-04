@@ -24,3 +24,8 @@
 
 - npm i mongoose
 - config creado e importado en app con su await correspondiente
+- crear base de datos y conectarla
+- probara a crear un producto 
+- crear models product con el modelo de schema
+- crear initDB para inicializar un producto en nuestra DB atraves de script "npm run initDataBase"
+-
