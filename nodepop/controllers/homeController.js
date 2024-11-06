@@ -1,10 +1,10 @@
 import Product from '../models/Product.js';
 
-export const getProductsJSON = async (req, res, next) => {
+export const getProductsJSON = async () => {
     try {
         const products = await Product.find(); // Obtiene todos los productos
-        res.json(products); // Devuelve en formato JSON
+        return products; // Devuelve solo los productos
     } catch (error) {
-        next(error);
+        throw new Error('Error al obtener los productos JSON');
     }
 };
