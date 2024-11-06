@@ -5,8 +5,9 @@ import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import connectMongoose from './config/mongooseConfig.js'
 
-import indexRouter from './routes/index.js'
+import homePage from './routes/index.js'
 import usersRouter from './routes/users.js'
+import home from './routes/home.js'
 
 await connectMongoose()
 console.log('Conectado a MongoDB.')
@@ -32,11 +33,11 @@ app.use(express.static(join(import.meta.dirname, 'public')))
 
 // Routing
 
-// homepage
-app.use('/', indexRouter)
+// homepage (index.js)
+app.use('/', home)
 // user page
 app.use('/users', usersRouter)
-
+app.use('/homepage', homePage)// render productsJSON
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404))

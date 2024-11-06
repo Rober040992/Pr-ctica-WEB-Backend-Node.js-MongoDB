@@ -29,4 +29,4 @@
 - crear models product con el modelo de schema
 - crear initDB para inicializar un producto en nuestra DB atraves de script "npm run initDataBase"
 - crear modelos de users y haseamos las passwords usando framework "bcrypt"  /users
-- get product list creado en formato json. correr la app y ver en el home
+- get product list creado en formato json. correr la app y ver en el homepage
