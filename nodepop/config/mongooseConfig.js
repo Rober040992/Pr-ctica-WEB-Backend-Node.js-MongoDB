@@ -1,4 +1,5 @@
-import mongoose from 'mongoose'
+//conexion a mongoDB. Este archivo establece la conexión y maneja errores de conexión.
+import mongoose from 'mongoose' 
 
 mongoose.connection.on('error', err => {
     console.log('Error de conexión', err)

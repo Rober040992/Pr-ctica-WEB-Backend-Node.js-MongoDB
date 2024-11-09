@@ -8,7 +8,7 @@ import * as homeController from './controllers/homeController.js'
 import * as loginController from './controllers/loginController.js'
 import * as productController from './controllers/productController.js'
 import * as sessionManager from './config/sessionManager.js'
-
+//en este file app.js configuramos la aplicación de Express, definimos los middlewares y las rutas
 
 await connectMongoose()
 console.log('Conectado a MongoDB')
@@ -46,7 +46,7 @@ app.all('/logout', loginController.logout)
 
 // private pages
 //obtiene un producto
-app.get('/product/new', sessionManager.isLoggedIn, productController.index)
+app.get('/product/new', sessionManager.isLoggedIn, productController.productController)
 //crea un producto 
 app.post('/product/new', sessionManager.isLoggedIn, productController.postNew)
 //elimina un producto creado

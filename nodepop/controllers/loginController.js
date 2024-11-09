@@ -1,5 +1,8 @@
 import User from '../models/User.js'
+//funciones de controlador que gestiona las rutas del login y logout
 
+/*Maneja el inicio y cierre de sesión. Compara las credenciales del usuario con la base de datos y,
+ si son correctas, crea una sesión para el usuario.*/
 export function loginController(req, res, next) {
     res.locals.error = ''
     res.locals.email = ''

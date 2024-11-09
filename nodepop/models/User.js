@@ -1,7 +1,9 @@
 import mongoose, { Schema } from 'mongoose'
 import bcrypt from 'bcrypt'
+//este es el esquema modelo que vamos a usar cada vez que se crea un usuario y una funciona que hashea
 
-// creating a schema model for the inital user
+
+// define el esquema modelo de usuario, con campos como email y password.
 const userSchema = new Schema({
     email: { type: String, unique: true },
     password: String

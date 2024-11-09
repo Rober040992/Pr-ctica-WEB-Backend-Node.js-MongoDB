@@ -1,3 +1,4 @@
+//gestion de sesiones
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
 

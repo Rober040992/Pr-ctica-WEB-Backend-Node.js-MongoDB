@@ -1,0 +1,72 @@
+Aquí tienes una explicación detallada de cómo funciona la aplicación web Nodepop. Te guiaré paso a paso para que comprendas cómo están organizados los archivos, cómo se relacionan y cómo funcionan las diferentes partes del proyecto.
+
+1. Descripción general de Nodepop
+Nodepop es una aplicación web para la venta de artículos de segunda mano. Permite a los usuarios registrarse, iniciar sesión y publicar productos con atributos como nombre, precio y etiquetas. Además, los usuarios pueden ver sus productos y eliminarlos si lo desean. La aplicación utiliza Node.js con el framework Express para el servidor, MongoDB para la base de datos y EJS como motor de plantillas para las vistas (interfaces de usuario).
+
+2. Estructura de directorios
+La aplicación está organizada en varios directorios, cada uno con una función específica:
+
+bin: Contiene el archivo www, que es el punto de entrada para iniciar el servidor.
+config: Incluye configuraciones como la conexión a MongoDB (mongooseConfig.js) y la gestión de sesiones (sessionManager.js).
+controllers: Aquí están las funciones de los controladores que gestionan la lógica para distintas rutas.
+models: Define los modelos de datos (esquemas de MongoDB) para los productos (Product.js) y usuarios (User.js).
+public: Contiene archivos estáticos, como hojas de estilo CSS.
+views: Archivos de vista en EJS que renderizan las páginas HTML de la aplicación.
+app.js: Configura la aplicación de Express, define los middlewares y las rutas.
+3. Configuración de la base de datos (config/mongooseConfig.js)
+Nodepop utiliza MongoDB como base de datos. En el archivo mongooseConfig.js, se configura la conexión a la base de datos usando Mongoose, una biblioteca de modelado para MongoDB en Node.js. Este archivo establece la conexión y maneja errores de conexión.
+
+4. Modelos de datos (models)
+User.js: Define el modelo de usuario, con campos como email y password. También incluye funciones para hashear (cifrar) la contraseña y comparar la contraseña ingresada con la almacenada en la base de datos.
+Product.js: Define el modelo de producto, con campos como name, price, owner (una referencia al usuario que creó el producto) y tags (etiquetas para categorizar el producto).
+5. Controladores (controllers)
+Los controladores son funciones que procesan las solicitudes de los usuarios y devuelven respuestas. Cada controlador está asociado a una ruta específica y maneja una lógica particular:
+
+homeController.js: Controla la página de inicio. Verifica si el usuario está autenticado y, de ser así, muestra los productos asociados a ese usuario.
+loginController.js: Maneja el inicio y cierre de sesión. Compara las credenciales del usuario con la base de datos y, si son correctas, crea una sesión para el usuario.
+productController.js: Controla la creación y eliminación de productos. Verifica que el usuario esté autenticado y sea el propietario del producto antes de permitirle eliminarlo.
+6. Sesiones y autenticación (config/sessionManager.js)
+Para gestionar las sesiones y el inicio de sesión, Nodepop utiliza express-session junto con connect-mongo para almacenar las sesiones en MongoDB.
+
+middleware: Configura las sesiones para la aplicación, estableciendo la duración y la seguridad de la sesión.
+useSessionInViews: Permite que las vistas accedan a la sesión para verificar si el usuario está autenticado.
+isLoggedIn: Middleware que redirige a la página de inicio de sesión si un usuario intenta acceder a una página protegida sin autenticarse.
+Estos middlewares se utilizan en app.js y se aplican en distintas rutas para garantizar que solo los usuarios autenticados puedan acceder a ciertas páginas.
+
+7. Archivos de vistas (views)
+Las vistas son archivos EJS (una extensión de HTML) que se renderizan en el navegador para mostrar contenido dinámico al usuario. Algunos archivos importantes:
+
+header.ejs y footer.ejs: Definen la cabecera y pie de página que se incluyen en las diferentes vistas.
+home.ejs: Muestra los productos del usuario autenticado y un botón para eliminarlos.
+login.ejs: Formulario de inicio de sesión.
+new-product.ejs: Formulario para crear un nuevo producto.
+8. Rutas de la aplicación (app.js)
+El archivo app.js configura la aplicación y define las rutas (URLs) y el comportamiento de la aplicación para cada una de estas rutas. Algunas rutas importantes:
+
+/login: Muestra el formulario de inicio de sesión.
+/product/new: Permite a un usuario autenticado crear un producto.
+/product/delete/
+: Permite a un usuario autenticado eliminar un producto.
+Cada ruta está asociada con un controlador que procesa la solicitud y genera una respuesta.
+
+9. Inicialización de datos (initDB.js)
+Este archivo es un script para inicializar la base de datos con datos de ejemplo. Realiza lo siguiente:
+
+Eliminar todos los usuarios y productos existentes.
+Crear usuarios de ejemplo y productos asociados a esos usuarios.
+Este script ayuda a crear un entorno inicial para probar la aplicación sin tener que ingresar manualmente datos cada vez.
+
+10. package.json
+Este archivo contiene información sobre la aplicación, como su nombre, versión y dependencias. También define scripts para ejecutar tareas específicas, como iniciar el servidor o inicializar la base de datos. Aquí puedes ver las bibliotecas que usa el proyecto, como express, mongoose, bcrypt para cifrar contraseñas y ejs para plantillas de vista.
+
+Resumen de la lógica general de la aplicación
+Autenticación: Los usuarios inician sesión con un email y contraseña. Si las credenciales son correctas, se guarda una sesión en MongoDB, lo que permite al usuario acceder a páginas privadas.
+Operaciones de producto: Los usuarios autenticados pueden crear, ver y eliminar productos.
+Control de acceso: Las páginas de creación y eliminación de productos solo están disponibles para usuarios autenticados y propietarios de los productos.
+Con esta guía, deberías tener una comprensión clara de cómo funciona Nodepop, cómo se relacionan las diferentes partes y cómo se gestiona la autenticación y las operaciones en la aplicación. ¡Avísame si necesitas más ayuda en algún punto específico!
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+//www,el punto de entrada para iniciar el servidor
 
 /**
  * Module dependencies.

@@ -1,6 +1,6 @@
 import Product from '../models/Product.js'
-
-// GET /
+//controlador de gestion de rutas del home 
+// Controla la página de inicio. Verifica si el usuario está autenticado y, de ser así, muestra los productos asociados a ese usuario.
 export async function homeController(req, res, next) {
     const userId = req.session.userId; // Identificamos el ID del usuario autenticado
 

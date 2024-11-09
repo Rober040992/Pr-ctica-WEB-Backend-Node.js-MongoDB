@@ -1,7 +1,12 @@
 import createError from 'http-errors'
 import Product from '../models/Product.js'
-
-export function index(req, res, next) {
+//funiones de controlador para la creacion y eliminacion de productos
+/*
+Controla la creación y eliminación de productos.
+Verifica que el usuario esté autenticado y 
+sea el propietario del producto antes de permitirle eliminarlo.
+*/
+export function productController(req, res, next) {
     res.render('new-product')
 }
 
