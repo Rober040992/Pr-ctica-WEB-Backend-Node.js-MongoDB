@@ -4,7 +4,7 @@ import MongoStore from 'connect-mongo'
 
 const INACTIVITY_EXPIRATION_2_DAYS = 1000 * 60 * 60 * 24 * 2
 
-// middleware para gestionar sesiones
+// Configura las sesiones para la aplicación, estableciendo la duración y la seguridad de la sesión.
 export const middleware = session({
     name: 'nodeapp-session',
     secret: 'asdasdalsñkdasqkpowjepcmasdapkqwe',
@@ -17,12 +17,12 @@ export const middleware = session({
     })
 })
 
-//este es para que las vistas puedan acceder a la sesion para ver si esta logado o no
+//este es para que las vistas puedan acceder a la sesion para ver si esta autenticado o no
 export function useSessionInViews(req, res, next) {
     res.locals.session = req.session
     next()
 }
-//redirige al user si no es el del userId
+//Middleware que redirige a la página de inicio de sesión si un usuario intenta acceder a una página protegida sin autenticarse.
 export function isLoggedIn(req, res, next) {
     if (!req.session.userId) {
         res.redirect('/login')

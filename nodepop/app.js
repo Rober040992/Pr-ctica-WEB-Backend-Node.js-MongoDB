@@ -38,13 +38,20 @@ app.use(express.static(join(import.meta.dirname, 'public')))
 
 app.use(sessionManager.middleware, sessionManager.useSessionInViews) //aqui usamos el sessionManager
 
-// public pages
+/*public pages
+/login: Muestra el formulario de inicio de sesión
+
+ */
 app.get('/', homeController.homeController)
 app.get('/login', loginController.loginController)
 app.post('/login', loginController.postLogin)
 app.all('/logout', loginController.logout)
 
 // private pages
+/*
+/product/new: Permite a un usuario autenticado crear un producto
+/product/delete/: Permite a un usuario autenticado eliminar un producto.
+*/
 //obtiene un producto
 app.get('/product/new', sessionManager.isLoggedIn, productController.productController)
 //crea un producto 

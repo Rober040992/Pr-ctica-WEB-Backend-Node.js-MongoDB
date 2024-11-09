@@ -2,7 +2,11 @@ import readline from 'node:readline'
 import connectMongoose from './config/mongooseConfig.js'
 import Product from './models/Product.js'
 import User from './models/User.js'
-
+/*
+Este archivo es un script para inicializar la base de datos con datos de ejemplo
+Eliminar todos los usuarios y productos existentes.
+Crear usuarios de ejemplo y productos asociados a esos usuarios
+*/
 
 const connection = await connectMongoose()
 console.log('Connected to MongoDB:', connection.name)
