@@ -2,8 +2,6 @@
 
 <div class="container d-flex justify-content-center align-items-center vh-100">
   <div class="card p-5 shadow-lg" style="max-width: 500px; width: 100%;">
-    <!-- Contenedor de la tarjeta centrado en pantalla -->
-    
     <h1 class="text-center mb-4 text-success">Crea un Producto</h1>
 
     <form method="POST">
@@ -32,20 +30,18 @@
           required
         >
       </div>
-      <!-- Campo para el Tag del producto -->
+
+      <!-- Selección de tags válidos con checkboxes -->
       <div class="mb-3">
-        <label for="productTag" class="form-label">Etiqueta</label>
-        <input
-          type="string"
-          name="tag"
-          class="form-control"
-          id="productTag"
-          placeholder="Tag del Producto"
-          required
-        >
+        <label class="form-label">Seleccione uno o varios Tags</label>
+        <div>
+          <label><input type="checkbox" name="tags" value="work"> Work</label>
+          <label><input type="checkbox" name="tags" value="lifestyle"> Lifestyle</label>
+          <label><input type="checkbox" name="tags" value="motor"> Motor</label>
+          <label><input type="checkbox" name="tags" value="mobile"> Mobile</label>
+        </div>
       </div>
 
-      <!-- Botón de envío -->
       <button type="submit" class="btn btn-primary w-100 mt-3">Crear Producto</button>
     </form>
   </div>

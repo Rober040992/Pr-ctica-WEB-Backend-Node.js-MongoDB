@@ -13,7 +13,7 @@ export function productController(req, res, next) {
 export async function postNew(req, res, next) {
     try {
         const userId = req.session.userId
-        const { name, price, tag } = req.body
+        const { name, price, tags } = req.body
 
         // TODO validaciones
 
@@ -21,7 +21,7 @@ export async function postNew(req, res, next) {
         const product = new Product({
             name,
             price,
-            tag,
+            tags,
             owner: userId
         })
 
