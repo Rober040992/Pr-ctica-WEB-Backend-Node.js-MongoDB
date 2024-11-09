@@ -11,6 +11,10 @@ const userSchema = new Schema({
 userSchema.statics.hashPassword = function (clearPassword) {
     return bcrypt.hash(clearPassword, 7)
 }
+//
+userSchema.methods.comparePassword = function (clearPassword) {
+    return bcrypt.compare(clearPassword, this.password)
+  }
 
 const User = mongoose.model('User', userSchema)
 

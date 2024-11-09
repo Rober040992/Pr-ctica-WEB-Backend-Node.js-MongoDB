@@ -1,21 +1,24 @@
 import { join } from 'node:path'
-import express from 'express'
+import express, { json, urlencoded } from 'express';
 import createError from 'http-errors'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 import connectMongoose from './config/mongooseConfig.js'
+import * as homeController from './controllers/homeController.js'
+import * as loginController from './controllers/loginController.js'
+import * as productController from './controllers/productController.js'
+import * as sessionManager from './config/sessionManager.js'
 
-import homePage from './routes/index.js'
-import usersRouter from './routes/users.js'
-import home from './routes/home.js'
 
 await connectMongoose()
-console.log('Conectado a MongoDB.')
+console.log('Conectado a MongoDB')
 
 const app = express()
+//aqui conectamos con header y renderizamos la app
+app.locals.appName = 'nodepop'
 
 // view engine setup
-app.set('views', join(import.meta.dirname, 'views'))
+app.set('views', join(import.meta.dirname, 'views')) //MOTOR DE PLANTILLS
 app.set('view engine', 'ejs')
 
 // middlewares
@@ -31,17 +34,31 @@ app.use(cookieParser())
 // set the folder where statis resources will be served
 app.use(express.static(join(import.meta.dirname, 'public')))
 
-// Routing
+// Routing rutas de la aplicacion
 
-// homepage (index.js)
-app.use('/', home)
-// user page
-app.use('/users', usersRouter)
-app.use('/homepage', homePage)// render productsJSON
+app.use(sessionManager.middleware, sessionManager.useSessionInViews) //aqui usamos el sessionManager
+
+// public pages
+app.get('/', homeController.homeController)
+app.get('/login', loginController.loginController)
+app.post('/login', loginController.postLogin)
+app.all('/logout', loginController.logout)
+
+// private pages
+//obtiene un producto
+app.get('/product/new', sessionManager.isLoggedIn, productController.index)
+//crea un producto 
+app.post('/product/new', sessionManager.isLoggedIn, productController.postNew)
+//elimina un producto creado
+app.get('/product/delete/:productId', sessionManager.isLoggedIn, productController.deleteProduct)
+
+
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404))
 })
+
 
 // error handler
 app.use(function (err, req, res, next) {

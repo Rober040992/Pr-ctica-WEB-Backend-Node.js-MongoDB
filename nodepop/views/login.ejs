@@ -1,0 +1,53 @@
+<%- include('header.ejs') %>
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-5 shadow-lg" style="max-width: 400px; width: 100%;">
+    <!-- Contenedor principal en forma de tarjeta centrado en pantalla -->
+
+    <h1 class="text-center mb-4 text-primary">Iniciar Sesión</h1>
+
+    <!-- Formulario de login -->
+    <form method="POST">
+      <!-- Campo de email -->
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Correo Electrónico</label>
+        <input
+          type="email"
+          name="email"
+          value="<%= email %>"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Ingresa tu correo"
+          required
+        >
+        <div id="emailHelp" class="form-text text-muted">Nunca compartiremos tu correo con terceros.</div>
+      </div>
+
+      <!-- Campo de contraseña -->
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Ingresa tu contraseña"
+          required
+        >
+      </div>
+
+      <!-- Mensaje de error (si existe) -->
+      <% if (error) { %>
+        <div class="alert alert-danger p-2 mt-2">
+          <%= error %>
+        </div>
+      <% } %>
+
+      <!-- Botón de envío -->
+      <button type="submit" class="btn btn-primary w-100 mt-3">Ingresar</button>
+    </form>
+  </div>
+</div>
+
+<%- include('footer.ejs') %>

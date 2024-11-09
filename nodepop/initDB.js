@@ -22,11 +22,19 @@ async function initProducts() {
     // delete all products
     const deleteResult = await Product.deleteMany()
     console.log(`Deleted ${ deleteResult.deletedCount } product.`)
+
+    //aqui estoy declarando las variables e insertandole los emails por orden 
+    const [rober, rober1, rober2] = await Promise.all([
+        User.findOne({ email: 'rober@example.com' }),
+        User.findOne({ email: 'rober1@example.com' }),
+        User.findOne({ email: 'rober2@example.com' })
+      ])
+
     // create initial products
     const insertResult = await Product.insertMany([
-        { name: 'car', price: 10000 },
-        { name: 'driller', price: 50 },
-        { name: 'fridge', price: 150 }
+        { name: 'car', price: 10000, owner: rober._id, tags:['motor', "lifestyle"]},
+        { name: 'driller', price: 50, owner: rober1._id, tags:['work'] },
+        { name: 'fridge', price: 150, owner: rober2._id, tags:['lifestyle'] }
     ])
     console.log(`Created ${ insertResult.length } product.`) 
 }
@@ -38,8 +46,8 @@ async function initUsers() {
     // create initial users
     const insertResult = await User.insertMany([
       { email: 'rober@example.com', password: await User.hashPassword('1234') },
-      { email: 'rober2@example.com', password: await User.hashPassword('1234') },
-      { email: 'rober3@example.com', password: await User.hashPassword('1234') }
+      { email: 'rober1@example.com', password: await User.hashPassword('1234') },
+      { email: 'rober2@example.com', password: await User.hashPassword('1234') }
     ])
     console.log(`Created ${insertResult.length} users.`)
   }

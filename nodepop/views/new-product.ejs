@@ -1,0 +1,54 @@
+<%- include('header.ejs') %>
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card p-5 shadow-lg" style="max-width: 500px; width: 100%;">
+    <!-- Contenedor de la tarjeta centrado en pantalla -->
+    
+    <h1 class="text-center mb-4 text-success">Crea un Producto</h1>
+
+    <form method="POST">
+      <!-- Campo para el nombre del producto -->
+      <div class="mb-3">
+        <label for="productName" class="form-label">Nombre del Producto</label>
+        <input
+          type="text"
+          name="name"
+          class="form-control"
+          id="productName"
+          placeholder="Nombre del producto"
+          required
+        >
+      </div>
+
+      <!-- Campo para el precio del producto -->
+      <div class="mb-3">
+        <label for="productPrice" class="form-label">Precio</label>
+        <input
+          type="number"
+          name="price"
+          class="form-control"
+          id="productPrice"
+          placeholder="Ingrese el precio"
+          required
+        >
+      </div>
+      <!-- Campo para el Tag del producto -->
+      <div class="mb-3">
+        <label for="productTag" class="form-label">Etiqueta</label>
+        <input
+          type="string"
+          name="Tag"
+          class="form-control"
+          id="productTag"
+          placeholder="Tag del Producto"
+          required
+        >
+      </div>
+
+      <!-- Botón de envío -->
+      <button type="submit" class="btn btn-primary w-100 mt-3">Crear Producto</button>
+    </form>
+  </div>
+</div>
+
+<%- include('footer.ejs') %>
