@@ -27,7 +27,7 @@ export async function postLogin(req, res, next) {
         // si el usuario existe y la contraseña coincide --> apuntar en su sesión, que está logado
         req.session.userId = user._id
         req.session.userName = user.email //aqui indico que el nombre del user es su email. 
-
+        
         // redirect a la home
         res.redirect('/')
     } catch (error) {

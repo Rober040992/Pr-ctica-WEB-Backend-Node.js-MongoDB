@@ -18,6 +18,13 @@ const productSchema = new Schema({
       },
     
 });
+//añadimos static method de esquema para la paginacion
+productSchema.statics.list = function(filter, limit, skip) {
+  const query = Product.find(filter)
+  query.limit(limit)
+  query.skip(skip)
+  return query.exec()
+}
 
 const Product = mongoose.model('Product', productSchema);
 

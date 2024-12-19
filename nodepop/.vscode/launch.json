@@ -1,0 +1,41 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+  
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Launch Program",
+        "skipFiles": [
+          "<node_internals>/**"
+        ],
+        "cwd": "${workspaceFolder}",
+        "outputCapture": "std",
+        // alternativa con program
+        "program": "${workspaceFolder}/bin/www",
+        "env": {
+          "DEBUG": "npx-express-generator-ejs:*",
+          "PORT": "4444"
+        },
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Launch Npm",
+        "skipFiles": [
+          "<node_internals>/**"
+        ],
+        "cwd": "${workspaceFolder}/nodeapp",
+        "outputCapture": "std",
+        // alternativa con NPM
+        "runtimeExecutable": "npm",
+        "runtimeArgs": [
+          "run",
+          "dev"
+        ],
+      }
+    ]
+  }

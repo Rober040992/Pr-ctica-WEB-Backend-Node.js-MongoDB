@@ -8,12 +8,13 @@ import * as homeController from './controllers/homeController.js'
 import * as loginController from './controllers/loginController.js'
 import * as productController from './controllers/productController.js'
 import * as sessionManager from './config/sessionManager.js'
-//en este file app.js configuramos la aplicación de Express, definimos los middlewares y las rutas
+//en este file app.js configuramos la aplicación de Express, definimos el uso de los middlewares y las rutas
 
 await connectMongoose()
 console.log('Conectado a MongoDB')
 
 const app = express()
+
 //aqui conectamos con header y renderizamos la app
 app.locals.appName = 'nodepop'
 
@@ -40,7 +41,6 @@ app.use(sessionManager.middleware, sessionManager.useSessionInViews) //aqui usam
 
 /*public pages
 /login: Muestra el formulario de inicio de sesión
-
  */
 app.get('/', homeController.homeController)
 app.get('/login', loginController.loginController)
@@ -59,13 +59,10 @@ app.post('/product/new', sessionManager.isLoggedIn, productController.postNew)
 //elimina un producto creado
 app.get('/product/delete/:productId', sessionManager.isLoggedIn, productController.deleteProduct)
 
-
-
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404))
 })
-
 
 // error handler
 app.use(function (err, req, res, next) {

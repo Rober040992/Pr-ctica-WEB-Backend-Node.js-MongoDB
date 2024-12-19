@@ -10,11 +10,21 @@ export async function homeController(req, res, next) {
     }
 
     try {
+        //buscamos los params de la query para paginar
+        const limit = req.query.limit
+        const skip = req.query.skip
+        const filter = {
+            owner: userId
+        }
+        
         // Buscamos los productos del usuario en la base de datos
-        const products = await Product.find({ owner: userId });
+        const products = await Product.list(filter, limit, skip); //en orden como en el model: http://localhost:4444/?limit=3&skip=1
+
+        
+        //aqui dentro hay productos totales: falta implementar la logica
+        const totalProducts = await Product.countDocuments(filter)
 
         // Si el usuario tiene productos, los agregamos a res.locals para pasarlos a la vista
-        
         res.locals.products = products.length > 0 ? products : [];
 
         // Renderizamos la vista de inicio con los productos del usuario
@@ -24,3 +34,4 @@ export async function homeController(req, res, next) {
         next(error);
     }
 }
+

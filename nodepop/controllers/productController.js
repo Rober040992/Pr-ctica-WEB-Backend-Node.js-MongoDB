@@ -14,9 +14,8 @@ export async function postNew(req, res, next) {
     try {
         const userId = req.session.userId
         const { name, price, tags } = req.body
-
         // TODO validaciones
-
+        
         // creo una instancia de producto en memoria
         const product = new Product({
             name,
@@ -34,6 +33,9 @@ export async function postNew(req, res, next) {
     }
 }
 
+
+
+//middleware de eliminacion de productos
 export async function deleteProduct(req, res, next) {
     const userId = req.session.userId
     const productId = req.params.productId
@@ -41,12 +43,12 @@ export async function deleteProduct(req, res, next) {
     // validar que el elemento que queremos borrar es propiedad del usuario logado!!!!!
     const product = await Product.findOne({ _id: productId })
 
-    // verificar que existe
+    // verificar que el producto existe
     if (!product) {
         console.warn(`WARNING - el usuario ${userId} está intentando eliminar un producto inexistente`)
         return next(createError(404, 'Not found'))
     }
-
+    //verificar que el owner coincide con el userId , si no lanzo un warn
     if (product.owner.toString() !== userId) {
         console.warn(`WARNING - el usuario ${userId} está intentando eliminar un agente de otro usuario`)
         return next(createError(401, 'Not authorized'))
