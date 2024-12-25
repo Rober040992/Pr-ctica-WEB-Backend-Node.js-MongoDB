@@ -11,7 +11,7 @@ export async function homeController(req, res, next) {
 
     try {
         //buscamos los params de la query para paginar
-        const limit = req.query.limit || 5 // || 5 para que aparezcan directamento un max de 5 productos
+        const limit = req.query.limit // || 5 para que aparezcan directamento un max de 5 productos
         const skip = req.query.skip || 0
         const filter = {
             owner: userId
