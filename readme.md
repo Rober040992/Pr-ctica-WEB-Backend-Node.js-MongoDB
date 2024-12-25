@@ -7,6 +7,7 @@ Nodepop es una aplicación web para la compra y venta de artículos de segunda m
 
 - Autenticación de usuarios: Registro, inicio de sesión y cierre de sesión.
 - Gestión de productos: Crear, ver y eliminar productos.
+- Paginacion manual introduciendo el limit&skip manualmente
 - Tags de productos: Cada producto puede tener uno o varios tags (categorías) como `work`, `lifestyle`, `motor` o `mobile`.
 - No existe un máximo para la cantidad de productos que un usuario puede crear.
 
@@ -126,4 +127,5 @@ La estructura de directorios de Nodepop es la siguiente:
 - **morgan**: Middleware de registro de solicitudes HTTP, útil para depuración y monitoreo.
 - **cross-env**: Para definir variables de entorno en los scripts de npm de manera multiplataforma.
 - **standard**: Linter para mantener el estilo y la calidad del código.
+- **multer**: multipart/form-data permite el manejo de files
 
