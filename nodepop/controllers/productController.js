@@ -21,7 +21,8 @@ export async function postNew(req, res, next) {
             name,
             price,
             tags,
-            owner: userId
+            owner: userId,
+            Image: req.file.filename
         })
 
         // guardar en base de datos

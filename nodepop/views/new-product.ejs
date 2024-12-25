@@ -4,7 +4,7 @@
   <div class="card p-5 shadow-lg" style="max-width: 500px; width: 100%;">
     <h1 class="text-center mb-4 text-success">Crea un Producto</h1>
 
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">   <!-- este enctypr es el formato para la subida de files con multer -->
       <!-- Campo para el nombre del producto -->
       <div class="mb-3">
         <label for="productName" class="form-label">Nombre del Producto</label>
@@ -28,6 +28,17 @@
           id="productPrice"
           placeholder="Ingrese el precio"
           required
+        >
+      </div>
+               
+      <!-- Campo para el upload del file/imagen -->
+      <div class="mb-3">
+        <label for="customFile" class="form-label">Image</label>
+        <input
+          type="file"
+          name="Image"
+          class="form-control"
+          id="customFile"
         >
       </div>
 

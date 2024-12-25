@@ -8,6 +8,7 @@ import * as homeController from './controllers/homeController.js'
 import * as loginController from './controllers/loginController.js'
 import * as productController from './controllers/productController.js'
 import * as sessionManager from './config/sessionManager.js'
+import upload from './config/uploadConfig.js';
 //en este file app.js configuramos la aplicación de Express, definimos el uso de los middlewares y las rutas
 
 await connectMongoose()
@@ -35,7 +36,7 @@ app.use(cookieParser())
 // set the folder where statis resources will be served
 app.use(express.static(join(import.meta.dirname, 'public')))
 
-// Routing rutas de la aplicacion
+// ROUTING DE LA APLICACION
 
 app.use(sessionManager.middleware, sessionManager.useSessionInViews) //aqui usamos el sessionManager
 
@@ -55,7 +56,7 @@ app.all('/logout', loginController.logout)
 //obtiene un producto
 app.get('/product/new', sessionManager.isLoggedIn, productController.productController)
 //crea un producto 
-app.post('/product/new', sessionManager.isLoggedIn, productController.postNew)
+app.post('/product/new', sessionManager.isLoggedIn,upload.single('Image'), productController.postNew)
 //elimina un producto creado
 app.get('/product/delete/:productId', sessionManager.isLoggedIn, productController.deleteProduct)
 

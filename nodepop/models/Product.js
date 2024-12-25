@@ -16,6 +16,7 @@ const productSchema = new Schema({
         type: [String],
         enum: ['work', 'lifestyle', 'motor', 'mobile',]
       },
+    Image: String
     
 });
 //añadimos static method de esquema para la paginacion
