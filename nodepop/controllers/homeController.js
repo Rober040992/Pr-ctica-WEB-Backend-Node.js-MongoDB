@@ -11,8 +11,8 @@ export async function homeController(req, res, next) {
 
     try {
         //buscamos los params de la query para paginar
-        const limit = req.query.limit
-        const skip = req.query.skip
+        const limit = req.query.limit || 5 // || 5 para que aparezcan directamento un max de 5 productos
+        const skip = req.query.skip || 0
         const filter = {
             owner: userId
         }
@@ -20,7 +20,6 @@ export async function homeController(req, res, next) {
         // Buscamos los productos del usuario en la base de datos
         const products = await Product.list(filter, limit, skip); //en orden como en el model: http://localhost:4444/?limit=3&skip=1
 
-        
         //aqui dentro hay productos totales: falta implementar la logica
         const totalProducts = await Product.countDocuments(filter)
 
