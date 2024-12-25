@@ -1,4 +1,4 @@
-
+![Nodepop Home](ejem.png)
 # Nodepop
 
 Nodepop es una aplicación web para la compra y venta de artículos de segunda mano. Permite a los usuarios registrarse, iniciar sesión y gestionar sus productos mediante un sistema de autenticación. Cada usuario puede crear productos con atributos como nombre, precio y etiquetas, y no hay un límite máximo para la cantidad de productos que un usuario puede crear. La aplicación está desarrollada con **Node.js**, **Express**, **MongoDB** y **EJS**.
