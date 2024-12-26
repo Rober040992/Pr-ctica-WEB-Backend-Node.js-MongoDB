@@ -15,14 +15,15 @@ export async function postNew(req, res, next) {
         const userId = req.session.userId
         const { name, price, tags } = req.body
         // TODO validaciones
-        
+        // Validar si se subió un archivo
+        const image = req.file ? req.file.filename : null;
         // creo una instancia de producto en memoria
         const product = new Product({
             name,
             price,
             tags,
             owner: userId,
-            Image: req.file.filename
+            Image: image
         })
 
         // guardar en base de datos
