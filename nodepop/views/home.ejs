@@ -20,7 +20,7 @@
           <div class="product-item p-3 mb-3 border rounded shadow-sm">
             <h5 class="product-name mb-1"><%= product.name %></h5>
             <p class="product-price text-success mb-1"><strong>Precio:</strong> $<%= product.price %></p>
-            <img src="/uploads/<%= product.Image %>" alt="Imagen" width="10%"> <!-- aqui seleccionamos el ficheroi y lo renderizamos -->
+            <img src="<%= product.Image ? `/uploads/${product.Image}` : 'https://placeholder.co/80' %>" alt="Imagen" width="10%"> <!-- aqui seleccionamos el ficheroi y lo renderizamos y si no hay pues usamo placeholder.co-->
             <p class="product-tag text-muted mb-1"><strong>Etiqueta:</strong> <%= product.tags %></p>
             <a href="/product/delete/<%= product.id %>" class="btn btn-outline-danger btn-sm">
               <i class="bi bi-trash"></i> Eliminar
