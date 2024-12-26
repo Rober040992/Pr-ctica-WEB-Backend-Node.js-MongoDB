@@ -13,7 +13,7 @@ export const middleware = session({
     cookie: { maxAge: INACTIVITY_EXPIRATION_2_DAYS },
     // las sesiones se guardan en MongoDB
     store: MongoStore.create({
-        mongoUrl: 'mongodb://127.0.0.1:27017/nodepop'
+        mongoUrl: process.env.MONGO_URI
     })
 })
 

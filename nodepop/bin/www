@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+import 'dotenv/config' //para creacion de variables de entorno contenidas en .env
 import { createServer } from 'node:http'
 import app from '../app.js'
 import debugLib from 'debug'
