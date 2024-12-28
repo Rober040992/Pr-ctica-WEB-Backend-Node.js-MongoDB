@@ -11,6 +11,7 @@ Nodepop es una aplicación web para la compra y venta de artículos de segunda m
 - Filtro por precio MAX ejm: http://localhost:5555/?maxPrice=20 o MIN ejm http://localhost:5555/?minPrice=20
 - Opcional: Tags de productos: Cada producto puede tener uno o varios tags (categorías) como `work`, `lifestyle`, `motor` o `mobile`.
 - Opcional la creacion de producto con file (Image)
+- Internacionalizacion
 - No existe un máximo para la cantidad de productos que un usuario puede crear.
 
 ## Requisitos previos
@@ -34,6 +35,7 @@ Asegúrate de tener instalados:
    ```bash
    npm install
    ```
+   - 2.1 en tu primer deploy crear un .env en la root del proyecto y customiza las variables de entorno ejm: MONGO_URI = mongodb://127.0.0.1:27017/nodepop
 
 3. Configura tu base de datos en MongoDB y asegúrate de que esté ejecutándose en `mongodb://127.0.0.1:27017/nodepop`.
 
@@ -99,6 +101,7 @@ npm run lint
    - **Nombre**: Un nombre único para el producto.
    - **Precio**: El precio del producto (en dólares). *No hay un límite máximo para el precio.*
    - **Tags**: Uno o varios tags que describan el producto (`work`, `lifestyle`, `motor`, `mobile`).
+   - **Subida de archivos**: opcional subida de archivo tipo Imagen
 
 5. **Ver y eliminar productos**: Los productos creados por el usuario aparecerán en la página de inicio. Desde allí, el usuario puede ver los detalles de cada producto o eliminarlos.
 
@@ -129,6 +132,6 @@ La estructura de directorios de Nodepop es la siguiente:
 - **morgan**: Middleware de registro de solicitudes HTTP, útil para depuración y monitoreo.
 - **cross-env**: Para definir variables de entorno en los scripts de npm de manera multiplataforma.
 - **standard**: Linter para mantener el estilo y la calidad del código.
-- **multer**: multipart/form-data permite el manejo de files
+- **multer**: multipart/form-data permite el manejo de files como la subida.
 - **dotenv**: creacion de variables de entorno (contenidas en file .env)
-
+- **i18n**: internacionalizacion de todo el contenido estatico (no de los datos)

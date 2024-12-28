@@ -57,17 +57,17 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                        <a class="nav-link" aria-current="page" href="/"><%= __('Home') %></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/product/new">Crear Producto</a>
+                        <a class="nav-link" href="/product/new"><%= __('Create Product') %></a>
                     </li>
                 </ul>
                 <div class="d-flex">
                     <% if (session.userId) { %>
-                        <a href="/logout" class="btn btn-outline-success ms-2">Logout</a>
+                        <a href="/logout" class="btn btn-outline-success ms-2"><%= __('Logout') %></a>
                     <% } else { %>
-                        <a href="/login" class="btn btn-outline-success ms-2">Login</a>
+                        <a href="/login" class="btn btn-outline-success ms-2"><%= __('Login') %></a>
                     <% } %>
                 </div>
             </div>

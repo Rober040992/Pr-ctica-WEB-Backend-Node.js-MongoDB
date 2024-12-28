@@ -1,3 +1,20 @@
 {
-	"User": "User"
+	"User": "User",
+	"Create Product": "Create Product",
+	"Home": "Home",
+	"Logout": "Logout",
+	"Login": "Login",
+	"Email": "Email",
+	"we´ll never share your email": "we´ll never share your email",
+	"Your-email-here": "Your-email-here",
+	"Password": "Password",
+	"Submit": "Submit",
+	"Delete": "Delete",
+	"Price": "Price",
+	"Tag": "Tag",
+	"Product Name": "Product Name",
+	"Product-Price": "Product-Price",
+	"Image": "Image",
+	"Choose one or more tags": "Choose one or more tags",
+	"Work": "Work"
 }

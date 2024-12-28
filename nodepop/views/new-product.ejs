@@ -7,33 +7,33 @@
     <form method="POST" enctype="multipart/form-data">   <!-- este enctypr es el formato para la subida de files con multer -->
       <!-- Campo para el nombre del producto -->
       <div class="mb-3">
-        <label for="productName" class="form-label">Nombre del Producto</label>
+        <label for="productName" class="form-label"><%= __('Product Name') %></label>
         <input
           type="text"
           name="name"
           class="form-control"
           id="productName"
-          placeholder="Nombre del producto"
+          placeholder=<%= __('Product Name') %>
           required
         >
       </div>
 
       <!-- Campo para el precio del producto -->
       <div class="mb-3">
-        <label for="productPrice" class="form-label">Precio</label>
+        <label for="productPrice" class="form-label"><%= __('Price') %></label>
         <input
           type="number"
           name="price"
           class="form-control"
           id="productPrice"
-          placeholder="Ingrese el precio"
+          placeholder=<%= __('Product-Price') %>
           required
         >
       </div>
                
       <!-- Campo para el upload del file/imagen -->
       <div class="mb-3">
-        <label for="customFile" class="form-label">Image</label>
+        <label for="customFile" class="form-label"><%= __('Image') %></label>
         <input
           type="file"
           name="Image"
@@ -44,16 +44,16 @@
 
       <!-- Selección de tags válidos con checkboxes -->
       <div class="mb-3">
-        <label class="form-label">Seleccione uno o varios Tags</label>
+        <label class="form-label"><%= __('Choose one or more tags') %></label>
         <div>
-          <label><input type="checkbox" name="tags" value="work"> Work</label>
+          <label><input type="checkbox" name="tags" value="work"> <%= __('Work') %></label>
           <label><input type="checkbox" name="tags" value="lifestyle"> Lifestyle</label>
           <label><input type="checkbox" name="tags" value="motor"> Motor</label>
           <label><input type="checkbox" name="tags" value="mobile"> Mobile</label>
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary w-100 mt-3">Crear Producto</button>
+      <button type="submit" class="btn btn-primary w-100 mt-3"><%= __('Create Product') %></button>
     </form>
   </div>
 </div>

@@ -1,3 +1,20 @@
 {
-	"User": "Usuario"
+	"User": "Usuario",
+	"Create Product": "Crear Producto",
+	"Home": "Inicio",
+	"Logout": "📤 Sesión",
+	"Login": "Iniciar Sesión",
+	"Email": "Correo electrónico",
+	"we´ll never share your email": "Nunca compartiremos tu email",
+	"Your-email-here": "Tu-email-aqui",
+	"Password": "Contraseña",
+	"Submit": "Entregar",
+	"Delete": "Eliminar",
+	"Price": "Precio",
+	"Tag": "Etiqueta",
+	"Product Name": "Nombre del Producto",
+	"Product-Price": "Precio-del-producto",
+	"Image": "Imagen",
+	"Choose one or more tags": "Selecciona una o mas etiquetas",
+	"Work": "Trabajo"
 }
