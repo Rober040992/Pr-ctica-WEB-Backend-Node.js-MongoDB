@@ -6,7 +6,7 @@
     <!-- Tarjeta para el contenedor -->
     
     <!-- Usuario logueado -->
-    <h4 class="text-primary mb-4">Usuario: <%= session.userName %></h4>
+    <h4 class="text-primary mb-4"><%= __('User') %>: <%= session.userName %></h4>
 
     <% if (!session.userId) { %>
       <!-- Mensaje para usuarios no logueados -->

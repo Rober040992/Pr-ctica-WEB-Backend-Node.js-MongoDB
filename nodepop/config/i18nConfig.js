@@ -4,7 +4,7 @@ import path from 'node:path'
 
 
 const i18n = new I18n({
-    locales: ['en', 'de'],
+    locales: ['en', 'es'],
     directory: path.join(import.meta.dirname, '..','locales'), //donde lo guardamos
     defaultLocale: 'en',
     autoReload: true, // actualiza los cambios en los JSON, si los hay en la carpeta locales
