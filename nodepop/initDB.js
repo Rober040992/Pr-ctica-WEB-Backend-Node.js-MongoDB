@@ -1,3 +1,4 @@
+import 'dotenv/config' //para creacion de variables de entorno contenidas en .env
 import readline from 'node:readline'
 import connectMongoose from './config/mongooseConfig.js'
 import Product from './models/Product.js'

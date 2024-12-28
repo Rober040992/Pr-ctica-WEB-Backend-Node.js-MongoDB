@@ -9,6 +9,7 @@ import * as loginController from './controllers/loginController.js'
 import * as productController from './controllers/productController.js'
 import * as sessionManager from './config/sessionManager.js'
 import upload from './config/uploadConfig.js';
+import i18n from './config/i18nConfig.js';
 //en este file app.js configuramos la aplicación de Express, definimos el uso de los middlewares y las rutas
 
 await connectMongoose()
@@ -36,9 +37,10 @@ app.use(cookieParser())
 // set the folder where statis resources will be served
 app.use(express.static(join(import.meta.dirname, 'public')))
 
-// ROUTING DE LA APLICACION
+// WEBSITE ROUTES
 
 app.use(sessionManager.middleware, sessionManager.useSessionInViews) //aqui usamos el sessionManager
+app.use(i18n.init)// lee la cabecera "accept lenguage" de la peticion y selecciona fichero de idioma
 
 /*public pages
 /login: Muestra el formulario de inicio de sesión
