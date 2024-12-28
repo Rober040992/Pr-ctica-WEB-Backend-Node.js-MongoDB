@@ -10,10 +10,11 @@ const userSchema = new Schema({
 })
 
 // hashing the password
+//.statics para metodos estaticos
 userSchema.statics.hashPassword = function (clearPassword) {
     return bcrypt.hash(clearPassword, 7)
 }
-//
+// .methods para metodos de instancia(no usar arrow functions por que perdemos el this)
 userSchema.methods.comparePassword = function (clearPassword) {
     return bcrypt.compare(clearPassword, this.password)
   }

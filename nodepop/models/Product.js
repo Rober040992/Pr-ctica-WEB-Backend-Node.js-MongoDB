@@ -20,7 +20,7 @@ const productSchema = new Schema({
     
 });
 //añadimos static method de esquema para la paginacion
-productSchema.statics.list = function(filter, limit, skip) {
+productSchema.statics.list = function(filter, limit, skip) { //es una función que ejecuta una consulta en la base de datos usando el filtro creado.
   const query = Product.find(filter)
   query.limit(limit)
   query.skip(skip)

@@ -16,5 +16,9 @@
 	"Product-Price": "Precio-del-producto",
 	"Image": "Imagen",
 	"Choose one or more tags": "Selecciona una o mas etiquetas",
-	"Work": "Trabajo"
+	"Work": "Trabajo",
+	"Filter-by-min-price": "Precio-Mínimo",
+	"Filter-by-max-price": "Precio-Máximo",
+	"Find": "Buscar",
+	"Reset Filters": "Limpiar Filtros"
 }
