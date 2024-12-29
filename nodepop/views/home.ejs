@@ -1,60 +1,71 @@
 <%- include('header.ejs') %>
 
-<div class="container mt-5">
-  <!-- Contenedor principal -->
-  <div class="card p-4 shadow-lg">
-    <!-- Tarjeta para el contenedor -->
-    
-    <!-- Usuario logueado -->
-    <h4 class="text-primary mb-4"><%= __('User') %>: <%= session.userName %></h4>
+  <div class="container mt-5">
+    <!-- Contenedor principal -->
+    <div class="bgcolor card p-4 shadow-lg">
+      <!-- Tarjeta para el contenedor -->
 
-    <% if (!session.userId) { %>
-      <!-- Mensaje para usuarios no logueados -->
-      <div class="alert alert-warning">
-        <p>Para ver el contenido debes hacer <a href="/login" class="alert-link"><%= __('Login') %></a></p>
-      </div>
-    <% } else { %>
-      <!-- formulario de filtro por precio y botones de submit y reset-->
-      <form method="GET">
-        <div class="product-item p-3 mb-3 border rounded shadow-sm">
-            <input 
-                placeholder="<%= __('Filter-by-min-price') %>" 
-                type="text" 
-                name="minPrice"
-            >
-            <input 
-                placeholder="<%= __('Filter-by-max-price') %>" 
-                type="text" 
-                name="maxPrice"
-            >
-            <button class="btn btn-outline-success ms-2" type="submit">
-                <%= __('Find') %>
-            </button>
-            <div class="btn btn-outline-danger btn-sm">
-              <a class="nav-link" href="/"><%= __('Reset Filters') %></a>
-            </div>
+      <!-- Usuario logueado -->
+      <h4 class="text-primary mb-4">
+        <%= __('User') %>: <%= session.userName %>
+      </h4>
+
+      <% if (!session.userId) { %>
+        <!-- Mensaje para usuarios no logueados -->
+        <div class="alert alert-warning">
+          <p>Para ver el contenido debes hacer <a href="/login" class="alert-link">
+              <%= __('Login') %>
+            </a></p>
         </div>
-    </form>
-    
+        <% } else { %>
+          <!-- formulario de filtro por precio y botones de submit y reset-->
+          <form method="GET">
+            <div class="product-item p-3 mb-3 border rounded shadow-sm">
+              <div>
+                <input placeholder="<%= __('Filter-by-name') %>" type="text" name="name">
+              </div>
+              <input placeholder="<%= __('Filter-by-min-price') %>" type="text" name="minPrice">
+              <input placeholder="<%= __('Filter-by-max-price') %>" type="text" name="maxPrice">
+              <button class="btn btn-outline-success ms-2" type="submit">
+                <%= __('Find') %>
+              </button>
+              <div class="btn btn-outline-danger btn-sm">
+                <a class="nav-link" href="/">
+                  <%= __('Reset Filters') %>
+                </a>
+              </div>
+            </div>
+          </form>
 
-      </form>
-      <!-- Lista de productos -->
-      <div class="product-list">
-        <% products.forEach(product => { %>
-          <div class="product-item p-3 mb-3 border rounded shadow-sm">
-            <h5 class="product-name mb-1"><%= product.name %></h5>
-            <p class="product-price text-success mb-1"><strong><%= __('Price') %>:</strong> $<%= product.price %></p>
-            <img src="<%= product.Image ? `/uploads/${product.Image}` : 'https://placeholder.co/80' %>" alt="Imagen" width="10%"> <!-- aqui seleccionamos el ficheroi y lo renderizamos y si no hay pues usamo placeholder.co-->
-            <p class="product-tag text-muted mb-1"><strong><%= __('Tag') %>:</strong> <%= product.tags %></p>
-            <a href="/product/delete/<%= product.id %>" class="btn btn-outline-danger btn-sm">
-              <i class="bi bi-trash"></i> <%= __('Delete') %>
-            </a>
+          <!-- Lista de productos -->
+          <div class="product-list">
+            <% products.forEach(product=> { %>
+              <div class="product-item p-3 mb-3 border rounded shadow-sm">
+                <h5 class="product-name mb-1">
+                  <%= product.name %>
+                </h5>
+                <p class="product-price text-success mb-1"><strong>
+                    <%= __('Price') %>:
+                  </strong> $<%= product.price %>
+                </p>
+                <img src="<%= product.Image ? `/uploads/${product.Image}` : 'https://placeholder.co/80' %>" alt="Imagen"
+                  width="10%">
+                <!-- aqui seleccionamos el ficheroi y lo renderizamos y si no hay pues usamo placeholder.co-->
+                <p class="product-tag text-muted mb-1"><strong>
+                    <%= __('Tag') %>:
+                  </strong>
+                  <%= product.tags %>
+                </p>
+                <a href="/product/delete/<%= product.id %>" class="btn btn-outline-danger btn-sm">
+                  <i class="bi bi-trash"></i>
+                  <%= __('Delete') %>
+                </a>
+              </div>
+              <% }) %>
           </div>
-        <% }) %>
-      </div>
-    <% } %>
+          <% } %>
+    </div>
   </div>
-</div>
 
 
-<%- include('footer.ejs') %>
+  <%- include('footer.ejs') %>

@@ -6,7 +6,8 @@ import mongoose, { Schema } from 'mongoose'
 /*
 Define el modelo de producto, con campos como name, price, 
 owner (una referencia al usuario que creó el producto) 
-y tags (etiquetas para categorizar el producto).
+y tags (etiquetas para categorizar el producto , restringidas (enum)).
+Image(almacena el nombre de la img)
 */
 const productSchema = new Schema({
     name: { type: String, unique: true },
@@ -19,7 +20,7 @@ const productSchema = new Schema({
     Image: String
     
 });
-//añadimos static method de esquema para la paginacion
+//añadimos static method de esquema para la paginacion (Consulta Paginada)
 productSchema.statics.list = function(filter, limit, skip) { //es una función que ejecuta una consulta en la base de datos usando el filtro creado.
   const query = Product.find(filter)
   query.limit(limit)

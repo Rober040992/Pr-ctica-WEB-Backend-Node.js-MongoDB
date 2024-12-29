@@ -14,10 +14,10 @@ export async function homeController(req, res, next) {
         const limit = req.query.limit // || 5 para que aparezcan directamento un max de 5 productos
         const skip = req.query.skip || 0
         const filter = { 
-            owner: userId,
-            
+            owner: userId, //SIMPRE VAMOS A FILTRAR POR OWNER
         }
-        // Filtro por precio mínimo y máximo maximo ejm: http://localhost:5555/?maxPrice=20 o minimo ejm http://localhost:5555/?minPrice=20
+
+        // añade Filtro por precio mínimo y máximo maximo ejm: http://localhost:5555/?maxPrice=20 o minimo ejm http://localhost:5555/?minPrice=20
         if (req.query.minPrice || req.query.maxPrice) { //verificamos que existan en la query
             filter.price = {}; //iniciamos campo price
             if (req.query.minPrice) {
@@ -26,6 +26,10 @@ export async function homeController(req, res, next) {
             if (req.query.maxPrice) {
                 filter.price.$lte = req.query.maxPrice;// $lte Less Than or Equal
             }
+        }
+        //añade filtro por name
+        if(req.query.name){
+            filter.name = req.query.name
         }
 
         // Buscamos los productos del usuario en la base de datos

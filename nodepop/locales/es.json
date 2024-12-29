@@ -20,5 +20,6 @@
 	"Filter-by-min-price": "Precio-Mínimo",
 	"Filter-by-max-price": "Precio-Máximo",
 	"Find": "Buscar",
-	"Reset Filters": "Limpiar Filtros"
+	"Reset Filters": "Limpiar Filtros",
+	"Filter-by-name": "Filter-by-name"
 }
