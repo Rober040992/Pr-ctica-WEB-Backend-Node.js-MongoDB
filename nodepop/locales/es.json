@@ -13,13 +13,13 @@
 	"Price": "Precio",
 	"Tag": "Etiqueta",
 	"Product Name": "Nombre del Producto",
-	"Product-Price": "Precio-del-producto",
+	"Product-Price": "Precio del producto",
 	"Image": "Imagen",
 	"Choose one or more tags": "Selecciona una o mas etiquetas",
 	"Work": "Trabajo",
-	"Filter-by-min-price": "Precio-Mínimo",
-	"Filter-by-max-price": "Precio-Máximo",
+	"Filter-by-min-price": "Precio Mínimo",
+	"Filter-by-max-price": "Precio Máximo",
 	"Find": "Buscar",
 	"Reset Filters": "Limpiar Filtros",
-	"Filter-by-name": "Filter-by-name"
+	"Filter-by-name": "Filtrar por nombre"
 }
