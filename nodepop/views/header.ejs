@@ -92,6 +92,14 @@
                         </a>
                     </li>
                 </ul>
+                
+                <%# language selector botons %>
+                <div class="nav-link"> <%# get locales devuelve un array de los distintos lenguajes %>
+                    <% getLocales().forEach( lang => { %>
+                       <a href="/change-locale/<%= lang %>"><%= lang %></a>
+                    <% })  %>
+                </div>
+
                 <div class="d-flex">
                     <% if (session.userId) { %>
                         <a href="/logout" class="btn btn-outline-success ms-2">

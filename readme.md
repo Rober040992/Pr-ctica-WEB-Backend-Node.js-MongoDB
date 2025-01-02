@@ -134,4 +134,4 @@ La estructura de directorios de Nodepop es la siguiente:
 - **standard**: Linter para mantener el estilo y la calidad del código.
 - **multer**: multipart/form-data permite el manejo de files como la subida.
 - **dotenv**: creacion de variables de entorno (contenidas en file .env)
-- **i18n**: internacionalizacion de todo el contenido estatico (no de los datos)
+- **i18n**: internacionalizacion de todo el contenido estatico (no de los datos), pluralizacion y selector de idiomas

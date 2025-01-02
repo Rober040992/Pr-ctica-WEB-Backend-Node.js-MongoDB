@@ -9,6 +9,7 @@ const i18n = new I18n({
     defaultLocale: 'en',
     autoReload: true, // actualiza los cambios en los JSON, si los hay en la carpeta locales
     syncFiles: true, // sincroniza todos los files
+    cookie: 'nodeapp-locale' // le decimnos como se llama nuestra cookie
   });
 
 export default i18n

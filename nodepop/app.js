@@ -1,8 +1,8 @@
 import { join } from 'node:path'
 import express, { json, urlencoded } from 'express';
 import createError from 'http-errors'
-import cookieParser from 'cookie-parser'
 import logger from 'morgan'
+import cookieParser from 'cookie-parser'
 import connectMongoose from './config/mongooseConfig.js'
 import * as homeController from './controllers/homeController.js'
 import * as loginController from './controllers/loginController.js'
@@ -10,6 +10,7 @@ import * as productController from './controllers/productController.js'
 import * as sessionManager from './config/sessionManager.js'
 import upload from './config/uploadConfig.js';
 import i18n from './config/i18nConfig.js';
+import * as langController from './controllers/langController.js'
 //en este file app.js configuramos la aplicación de Express, definimos el uso de los middlewares y las rutas
 
 await connectMongoose()
@@ -41,6 +42,7 @@ app.use(express.static(join(import.meta.dirname, 'public')))
 
 app.use(sessionManager.middleware, sessionManager.useSessionInViews) //aqui usamos el sessionManager
 app.use(i18n.init)// lee la cabecera "accept lenguage" de la peticion y selecciona fichero de idioma
+app.get('/change-locale/:locale', langController.changeLocale) // cuando hagan una peticion tipo get a /change-locale/:locale(en o es) llama al langController a traves de àrametrp en ruta
 
 /*public pages
 /login: Muestra el formulario de inicio de sesión
