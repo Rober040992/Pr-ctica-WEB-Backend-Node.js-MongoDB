@@ -21,5 +21,9 @@
 	"Filter-by-max-price": "Precio Máximo",
 	"Find": "Buscar",
 	"Reset Filters": "Limpiar Filtros",
-	"Filter-by-name": "Filtrar por nombre"
+	"Filter-by-name": "Filtrar por nombre",
+	"raton": {
+		"one": "raton",
+		"other": "ratones"
+	}
 }

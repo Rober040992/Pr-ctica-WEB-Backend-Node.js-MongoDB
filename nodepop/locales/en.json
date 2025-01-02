@@ -21,5 +21,9 @@
 	"Find": "Find",
 	"Filter-by-max-price": "Filter-by-max-price",
 	"Reset Filters": "Reset Filters",
-	"Filter-by-name": "Filter-by-name"
+	"Filter-by-name": "Filter-by-name",
+	"raton": {
+		"one": "mouse",
+		"other": "mice"
+	}
 }
