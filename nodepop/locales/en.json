@@ -25,5 +25,6 @@
 	"raton": {
 		"one": "mouse",
 		"other": "mice"
-	}
+	},
+	"Para ver el contenido debes hacer": "You must login using a valid user 👉 "
 }

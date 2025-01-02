@@ -16,11 +16,11 @@ export async function postLogin(req, res, next) {
         // buscar el usuario en la base de datos
         const user = await User.findOne({ email: email.toLowerCase() })
 
-        // si no lo encuentro, o la contraseña no coincide --> error
+        // si no lo encuentro, o la contraseña o user no coincide --> error y redirigo al login vacio
         if (!user || !(await user.comparePassword(password))) {
             res.locals.error = 'Invalid credentials'
             res.locals.email = email
-            res.render('login')
+            res.render('home')
             return
         }
 
