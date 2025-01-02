@@ -11,8 +11,8 @@ export async function homeController(req, res, next) {
 
     try {
         //buscamos los params de la query para paginar o filtrar
-        const limit = req.query.limit // || 5 para que aparezcan directamento un max de 5 productos
-        const skip = req.query.skip || 0
+        const limit = parseInt(req.query.limit) // || 5 para que aparezcan directamento un max de 5 productos
+        const skip = parseInt(req.query.skip)  || 0
         const filter = { 
             owner: userId, //SIMPRE VAMOS A FILTRAR POR OWNER
         }
@@ -29,7 +29,7 @@ export async function homeController(req, res, next) {
         }
         //añade filtro por name
         if(req.query.name){
-            filter.name = req.query.name
+            filter.name = new RegExp(req.query.name, 'i')
         }
 
         // Buscamos los productos del usuario en la base de datos
