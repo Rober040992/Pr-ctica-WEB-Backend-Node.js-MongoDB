@@ -96,7 +96,10 @@
                 <%# language selector botons %>
                 <div class="nav-link"> <%# get locales devuelve un array de los distintos lenguajes %>
                     <% getLocales().forEach( lang => { %>
-                       <a href="/change-locale/<%= lang %>"><%= lang %></a>
+                       <a href="/change-locale/<%= lang %>"> 
+                        <img src="/images/<%= lang %>.png  %>" alt="banderas"> <%# nos traemos imagenes para los langs %>
+                        <%= lang %>
+                        </a>
                     <% })  %>
                 </div>
 
