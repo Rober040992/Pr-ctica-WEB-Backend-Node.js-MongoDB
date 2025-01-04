@@ -28,21 +28,17 @@ app.set('views', join(import.meta.dirname, 'views')) //MOTOR DE PLANTILLS
 app.set('view engine', 'ejs')
 
 // middlewares
-// morgan logger for http requests logs
-app.use(logger('dev'))
-// transforms json objects into js objects
-app.use(express.json())
-// transforms data sent by a form to a js object
-app.use(express.urlencoded({ extended: false }))
-// cookie parser to get cookies from client
-app.use(cookieParser())
-// set the folder where statis resources will be served
-app.use(express.static(join(import.meta.dirname, 'public')))
+
+app.use(logger('dev'))    // morgan logger for http requests logs
+app.use(express.json())   // transforms json objects into js objects
+app.use(express.urlencoded({ extended: false }))  // transforms data sent by a form to a js object (for sent urlencoded forms)
+app.use(cookieParser())   // cookie parser to get cookies from client
+app.use(express.static(join(import.meta.dirname, 'public')))    // set the folder where statis resources will be served
 
 // API ROUTES
 app.get('/api/products', apiPorductController.apiProductGetList)
 app.get('/api/products/:productId', apiPorductController.apiProductGetOne) //solo un producto por _id
-
+app.post('/api/products', apiPorductController.apiCreateNewProduct)
 
 // WEBSITE ROUTES
 

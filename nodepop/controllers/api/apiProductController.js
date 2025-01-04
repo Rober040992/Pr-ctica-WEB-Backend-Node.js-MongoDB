@@ -37,9 +37,27 @@ export async function apiProductGetList(req, res, next){
 
 export async function apiProductGetOne(req, res, next) {
     try {
+        //obtenemos la peticion del los parametros de la ruta
         const productId = req.params.productId
+        // buscamos el product en la base de datos
         const product = await Product.findById(productId)
+        // devolvemos un objeto en forma de json
         res.json({ result: product })
+    } catch (error) {
+        next(error)
+    }
+}
+
+export async function apiCreateNewProduct(req, res, next) {
+    try {
+        // obtenemos los datos del form del body
+        const productBodyData = req.body
+        //creando instancia del producto en memoria y le pasamos el body del newProduct
+        const newProduct = new Product(productBodyData)
+        //lo guardamos
+        const savedProduct = await newProduct.save()
+        // devolvemos
+        res.status(201).json({ result: savedProduct })
     } catch (error) {
         next(error)
     }
