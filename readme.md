@@ -22,7 +22,8 @@ Nodepop es una aplicación web para la compra y venta de artículos de segunda m
 
 ## Características del API
 ### base URL: http://localhost:3000/api
-- Obtencion de productos /products
+### CRUD:
+- Obtencion de lista de productos con metodo GET /products
 ```json
    {
        "_id": "672fb2ae96dbac14e6740ff1",
@@ -35,7 +36,8 @@ Nodepop es una aplicación web para la compra y venta de artículos de segunda m
        "__v": 0
    }
 ```
-- Creacion de productos con o sin imagen y etiquetas
+- Obtencion de producto unico por su _id metodo get /api/products/:productId
+- Creacion de productos con o sin imagen y etiquetas. metodo POST /api/products
 ```json
 {
     "result": {
@@ -50,7 +52,9 @@ Nodepop es una aplicación web para la compra y venta de artículos de segunda m
     }
 }
 ```
-- Obtencion de producto unico por su _id /api/products/:productId
+- Eliminacion de un producto unico por su _id metodo. Delete /api/products/:productId
+- Actualizacion de un producto por _id. metodo Put /api/products:productId
+## otros carazteristicas
 - Paginacion manual introduciendo el limit&skip manualmente ejm: products/?limit=5&skip=0
 - Filtro por precio MAX ejm: /?maxPrice=20 o MIN ejm /?minPrice=20
 - Busqueda por nombre /?name=ejemplo

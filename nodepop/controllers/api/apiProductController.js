@@ -1,5 +1,7 @@
 import Product from "../../models/Product.js"
 // iportamos el modelo del producto
+//      API CRUD METHODS
+
 export async function apiProductGetList(req, res, next){
     try{
         const limit = parseInt(req.query.limit) // || 5 para que aparezcan directamente un max de 5 productos
@@ -78,6 +80,19 @@ export async function apiProductUpdate(req, res, next) {
         //actualizar:
         const updatedProduct = await Product.findByIdAndUpdate(productId, productData, { new: true }) //new:true para obtener el doc updated
         res.json({ result: updatedProduct })
+    } catch (error) {
+        next(error)
+    }
+}
+
+export async function apiProductDelete(req, res, next) {
+    try {
+         //recogemos del los parametros de la ruta
+         const productId = req.params.productId
+         // buscamos el product en la DB pasandole el filtro de el que vamos a borrar
+         await Product.deleteOne({ _id: productId })
+
+        res.json()
     } catch (error) {
         next(error)
     }

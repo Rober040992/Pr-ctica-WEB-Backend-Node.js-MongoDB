@@ -40,6 +40,7 @@ app.get('/api/products', apiPorductController.apiProductGetList)
 app.get('/api/products/:productId', apiPorductController.apiProductGetOne) //solo un producto por _id
 app.post('/api/products', upload.single('Image'), apiPorductController.apiCreateNewProduct)
 app.put('/api/products/:productId',upload.single('Image'), apiPorductController.apiProductUpdate)
+app.delete('/api/products/:productId', apiPorductController.apiProductDelete)
 
 app.use(sessionManager.middleware, sessionManager.useSessionInViews) //aqui usamos el sessionManager
 app.use(i18n.init)// lee la cabecera "accept lenguage" de la peticion y selecciona fichero de idioma
