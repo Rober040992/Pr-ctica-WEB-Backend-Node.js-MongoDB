@@ -54,6 +54,9 @@ export async function apiCreateNewProduct(req, res, next) {
         const productBodyData = req.body
         //creando instancia del producto en memoria y le pasamos el body del newProduct
         const newProduct = new Product(productBodyData)
+        //le asignamos la propiedad image (opcional)
+        newProduct.Image = req.file?.filename
+
         //lo guardamos
         const savedProduct = await newProduct.save()
         // devolvemos

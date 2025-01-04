@@ -35,6 +35,22 @@ Nodepop es una aplicación web para la compra y venta de artículos de segunda m
        "__v": 0
    }
 ```
+- Creacion de productos con o sin imagen y etiquetas
+```json
+{
+    "result": {
+        "name": "apiproductconimagen",
+        "price": 55,
+        "tags": [
+            "work"
+        ],
+        "_id": "67793a08b8114c9236a181b3",
+        "Image": "50a6aaf6c1814be3e5e03399f45af9f9",
+        "__v": 0
+    }
+}
+```
+- Obtencion de producto unico por su _id /api/products/:productId
 - Paginacion manual introduciendo el limit&skip manualmente ejm: products/?limit=5&skip=0
 - Filtro por precio MAX ejm: /?maxPrice=20 o MIN ejm /?minPrice=20
 - Busqueda por nombre /?name=ejemplo

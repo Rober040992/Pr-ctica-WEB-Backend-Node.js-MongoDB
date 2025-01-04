@@ -38,7 +38,7 @@ app.use(express.static(join(import.meta.dirname, 'public')))    // set the folde
 // API ROUTES
 app.get('/api/products', apiPorductController.apiProductGetList)
 app.get('/api/products/:productId', apiPorductController.apiProductGetOne) //solo un producto por _id
-app.post('/api/products', apiPorductController.apiCreateNewProduct)
+app.post('/api/products', upload.single('Image'), apiPorductController.apiCreateNewProduct)
 
 // WEBSITE ROUTES
 
