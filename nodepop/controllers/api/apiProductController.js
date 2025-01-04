@@ -24,7 +24,11 @@ export async function apiProductGetList(req, res, next){
         const totalProducts = await Product.countDocuments(filter)
         res.locals.products = products.length > 0 ? products : [];
         res.locals.totalProducts = totalProducts;
-        res.json({ results: products})
+        res.json({ 
+            results: products,
+            count: totalProducts
+
+        })
         // devolvemos una lista con todos los protuctos
     } catch (error){
         next(error)

@@ -21,11 +21,27 @@ Nodepop es una aplicación web para la compra y venta de artículos de segunda m
 - No existe un máximo para la cantidad de productos que un usuario puede crear.
 
 ## Características del API
-- Obtencion de productos
-- Paginacion manual introduciendo el limit&skip manualmente ejm: http://localhost:5555/?limit=5&skip=0
-- Filtro por precio MAX ejm: http://localhost:5555/?maxPrice=20 o MIN ejm http://localhost:5555/?minPrice=20
-- Busqueda por nombre
+### base URL: http://localhost:3000/api
+- Obtencion de productos /products
+```json
+   {
+       "_id": "672fb2ae96dbac14e6740ff1",
+       "name": "fridge",
+       "price": 150,
+       "owner": "672fb2ae96dbac14e6740fe9",
+       "tags": [
+           "mobile"
+       ],
+       "__v": 0
+   }
+```
+- Paginacion manual introduciendo el limit&skip manualmente ejm: products/?limit=5&skip=0
+- Filtro por precio MAX ejm: /?maxPrice=20 o MIN ejm /?minPrice=20
+- Busqueda por nombre /?name=ejemplo
+- Busqueda por campo /?fields=name
 - Eliminacion de filtros
+- Conteo de productos
+- 
 
 ## Requisitos previos
 
