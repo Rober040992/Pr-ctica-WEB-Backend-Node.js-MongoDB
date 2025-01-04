@@ -40,11 +40,13 @@ app.get('/api/products', apiPorductController.apiProductGetList)
 app.get('/api/products/:productId', apiPorductController.apiProductGetOne) //solo un producto por _id
 app.post('/api/products', upload.single('Image'), apiPorductController.apiCreateNewProduct)
 
-// WEBSITE ROUTES
-
 app.use(sessionManager.middleware, sessionManager.useSessionInViews) //aqui usamos el sessionManager
 app.use(i18n.init)// lee la cabecera "accept lenguage" de la peticion y selecciona fichero de idioma
-app.get('/change-locale/:locale', langController.changeLocale) // cuando hagan una peticion tipo get a /change-locale/:locale(en o es) llama al langController a traves de àrametrp en ruta
+
+// WEBSITE ROUTES
+// peticion tipo get a /change-locale/:locale(en o es) llama al langController a traves de parametro en ruta
+app.get('/change-locale/:locale', langController.changeLocale) 
+
 
 /*public pages
 /login: Muestra el formulario de inicio de sesión

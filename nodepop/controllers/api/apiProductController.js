@@ -20,8 +20,11 @@ export async function apiProductGetList(req, res, next){
             filter.name = new RegExp(req.query.name, 'i')// Insensible a mayúsculas
         }
 
-        const products = await Product.list(filter, limit, skip, fields)
-        const totalProducts = await Product.countDocuments(filter)
+        const [products, totalProducts] = await Promise.all([
+            Product.list(filter, limit, skip, fields),
+            Product.countDocuments(filter)
+        ])
+        
         res.locals.products = products.length > 0 ? products : [];
         res.locals.totalProducts = totalProducts;
         res.json({ 
