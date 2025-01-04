@@ -1,3 +1,6 @@
+[![Spanish](https://img.shields.io/badge/lang-es-red)](README.es.md)
+[![English](https://img.shields.io/badge/lang-en-blue)](README.en.md)
+
 ![Nodepop Home](./nodepop/public/ejem.png)
 # Nodepop
 
@@ -7,12 +10,22 @@ Nodepop es una aplicación web para la compra y venta de artículos de segunda m
 
 - Autenticación de usuarios: Registro, inicio de sesión y cierre de sesión.
 - Gestión de productos: Crear, ver y eliminar productos.
+- Muestra el Usuario registrado
 - Paginacion manual introduciendo el limit&skip manualmente ejm: http://localhost:5555/?limit=5&skip=0
 - Filtro por precio MAX ejm: http://localhost:5555/?maxPrice=20 o MIN ejm http://localhost:5555/?minPrice=20
+- Busqueda por nombre
+- Eliminacion de filtros 
 - Opcional: Tags de productos: Cada producto puede tener uno o varios tags (categorías) como `work`, `lifestyle`, `motor` o `mobile`.
 - Opcional la creacion de producto con file (Image)
 - Internacionalizacion
 - No existe un máximo para la cantidad de productos que un usuario puede crear.
+
+## Características del API
+- Obtencion de productos
+- Paginacion manual introduciendo el limit&skip manualmente ejm: http://localhost:5555/?limit=5&skip=0
+- Filtro por precio MAX ejm: http://localhost:5555/?maxPrice=20 o MIN ejm http://localhost:5555/?minPrice=20
+- Busqueda por nombre
+- Eliminacion de filtros
 
 ## Requisitos previos
 
