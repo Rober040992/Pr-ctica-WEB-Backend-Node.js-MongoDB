@@ -41,6 +41,7 @@ app.use(express.static(join(import.meta.dirname, 'public')))
 
 // API ROUTES
 app.get('/api/products', apiPorductController.apiProductGetList)
+app.get('/api/products/:productId', apiPorductController.apiProductGetOne) //solo un producto por _id
 
 
 // WEBSITE ROUTES
