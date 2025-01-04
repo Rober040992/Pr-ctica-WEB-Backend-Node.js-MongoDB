@@ -24,7 +24,7 @@ export async function apiProductGetList(req, res, next){
             Product.list(filter, limit, skip, fields),
             Product.countDocuments(filter)
         ])
-        
+
         res.locals.products = products.length > 0 ? products : [];
         res.locals.totalProducts = totalProducts;
         res.json({ 
@@ -64,6 +64,20 @@ export async function apiCreateNewProduct(req, res, next) {
         const savedProduct = await newProduct.save()
         // devolvemos
         res.status(201).json({ result: savedProduct })
+    } catch (error) {
+        next(error)
+    }
+}
+
+export async function apiProductUpdate(req, res, next) {
+    try {
+        //recogemos datos de entrara
+        const productId = req.params.productId
+        const productData = req.body
+        productData.Image = req.file?.filename //le asignamos el file?
+        //actualizar:
+        const updatedProduct = await Product.findByIdAndUpdate(productId, productData, { new: true }) //new:true para obtener el doc updated
+        res.json({ result: updatedProduct })
     } catch (error) {
         next(error)
     }
