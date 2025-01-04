@@ -77,6 +77,13 @@ app.use(function (req, res, next) {
 // error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
+
+  // API errors send in JSON
+  if(req.url.startsWith('/api')) {
+    res.json({error: err.message})
+    return
+  }
+
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
 
