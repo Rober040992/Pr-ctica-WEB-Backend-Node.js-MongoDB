@@ -2,3 +2,4 @@ node_modules
 myguide.text
 package-lock.json
 spareNotes.txt
+.env

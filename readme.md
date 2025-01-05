@@ -54,6 +54,7 @@ Nodepop es una aplicación web para la compra y venta de artículos de segunda m
 ```
 - Eliminacion de un producto unico por su _id metodo. Delete /api/products/:productId
 - Actualizacion de un producto por _id. metodo Put /api/products:productId
+
 ## otros carazteristicas
 - Paginacion manual introduciendo el limit&skip manualmente ejm: products/?limit=5&skip=0
 - Filtro por precio MAX ejm: /?maxPrice=20 o MIN ejm /?minPrice=20
@@ -123,13 +124,16 @@ Este script inicializa la base de datos. Te pedirá confirmación para eliminar 
 ```bash
 npm run initDataBase
 ```
+### crear archivo .env 
+Este archvo esta a mode de example en la raiz del proyecto
+Simplemente copia el contenido del .example, pegalo en tu nuevo archivo .env y customiza las variables de entrono que se proporcionan dentro de este.
 
 #### Pasos para ejecutar `initDataBase`:
 
 1. Ejecuta el comando `npm run initDataBase`.
 2. Se te pedirá que confirmes si deseas vaciar la base de datos y crear datos de prueba. Escribe `yes` y presiona **Enter** para continuar.
 3. El script eliminará los usuarios y productos existentes y creará nuevos datos de ejemplo.
-
+4. Los usuarios a usar en el Web site y en la API vienen en el initDB.js
 ### `npm run lint`
 
 Ejecuta el linter `standard` para comprobar y corregir automáticamente el estilo de tu código según las reglas de JavaScript Standard Style.
@@ -142,17 +146,15 @@ npm run lint
 
 1. **Iniciar el servidor**: Una vez instaladas las dependencias, inicia el servidor ejecutando uno de los scripts mencionados (`start`, `dev` o `debug`).
 
-2. **Registrar un usuario**: Accede a la página de registro para crear una cuenta de usuario.
+2. **Iniciar sesión**: inicia sesión para acceder a la funcionalidad completa de la aplicación. (usando un user del initDB.js)
 
-3. **Iniciar sesión**: Una vez registrado, inicia sesión para acceder a la funcionalidad completa de la aplicación.
-
-4. **Crear productos**: En la página de creación de productos, el usuario autenticado puede agregar productos sin límite de cantidad. Cada producto puede incluir:
+3. **Crear productos**: En la página de creación de productos, el usuario autenticado puede agregar productos sin límite de cantidad. Cada producto puede incluir:
    - **Nombre**: Un nombre único para el producto.
    - **Precio**: El precio del producto (en dólares). *No hay un límite máximo para el precio.*
    - **Tags**: Uno o varios tags que describan el producto (`work`, `lifestyle`, `motor`, `mobile`).
    - **Subida de archivos**: opcional subida de archivo tipo Imagen
 
-5. **Ver y eliminar productos**: Los productos creados por el usuario aparecerán en la página de inicio. Desde allí, el usuario puede ver los detalles de cada producto o eliminarlos.
+4. **Ver y eliminar productos**: Los productos creados por el usuario aparecerán en la página de inicio. Desde allí, el usuario puede ver los detalles de cada producto o eliminarlos.
 
 ## Estructura del Proyecto
 
@@ -184,3 +186,4 @@ La estructura de directorios de Nodepop es la siguiente:
 - **multer**: multipart/form-data permite el manejo de files como la subida.
 - **dotenv**: creacion de variables de entorno (contenidas en file .env)
 - **i18n**: internacionalizacion de todo el contenido estatico (no de los datos), pluralizacion y selector de idiomas
+- **jsonwebtoken**: creacion de JWT para login de user en el API

@@ -3,16 +3,19 @@ import express, { json, urlencoded } from 'express';
 import createError from 'http-errors'
 import logger from 'morgan'
 import cookieParser from 'cookie-parser'
+// Web Site controllers
 import connectMongoose from './config/mongooseConfig.js'
 import * as homeController from './controllers/homeController.js'
 import * as loginController from './controllers/loginController.js'
 import * as productController from './controllers/productController.js'
 import * as sessionManager from './config/sessionManager.js'
+
 import upload from './config/uploadConfig.js';
 import i18n from './config/i18nConfig.js';
 import * as langController from './controllers/langController.js'
 //controllers del API:
 import * as apiPorductController from './controllers/api/apiProductController.js'
+import * as apiLoginCOntroller from './controllers/api/apiLoginController.js'
 
 //en este file app.js configuramos la aplicación de Express, definimos el uso de los middlewares y las rutas
 
@@ -35,12 +38,14 @@ app.use(express.urlencoded({ extended: false }))  // transforms data sent by a f
 app.use(cookieParser())   // cookie parser to get cookies from client
 app.use(express.static(join(import.meta.dirname, 'public')))    // set the folder where statis resources will be served
 
-// API ROUTES
+// API ROUTES //CRUD for products resource
 app.get('/api/products', apiPorductController.apiProductGetList)
 app.get('/api/products/:productId', apiPorductController.apiProductGetOne) //solo un producto por _id
 app.post('/api/products', upload.single('Image'), apiPorductController.apiCreateNewProduct)
 app.put('/api/products/:productId',upload.single('Image'), apiPorductController.apiProductUpdate)
 app.delete('/api/products/:productId', apiPorductController.apiProductDelete)
+// API LOGIN CRUD
+app.post('/api/login', apiLoginCOntroller.loginJWT)
 
 app.use(sessionManager.middleware, sessionManager.useSessionInViews) //aqui usamos el sessionManager
 app.use(i18n.init)// lee la cabecera "accept lenguage" de la peticion y selecciona fichero de idioma
