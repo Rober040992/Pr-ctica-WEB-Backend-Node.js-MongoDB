@@ -23,6 +23,11 @@ Nodepop es una aplicación web para la compra y venta de artículos de segunda m
 ## Características del API
 ### base URL: http://localhost:3000/api
 ### CRUD:
+- AUTORIZACION para operaciones CRUD del API: 
+    - tipo post  /login . copiar el tokenJWT y pasar este como header: 
+    Key = Authorization ; Value = el tokenJWT que genera el /login
+    o bien como query : ejm `/api/agents?jwt=eltokengeneradoalhacerlogin`
+
 - Obtencion de lista de productos con metodo GET /products
 ```json
    {

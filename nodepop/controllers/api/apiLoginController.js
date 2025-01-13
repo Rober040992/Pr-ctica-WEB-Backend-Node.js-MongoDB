@@ -16,7 +16,7 @@ export async function loginJWT(req, res, next) {
         // si lo encuentro genero un JWT
         jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { 
             expiresIn: '2d' 
-        }, (err, tokenJWT) => {
+        }, (err, tokenJWT) => { //callback 
             if(err) {
                 next(err)
                 return

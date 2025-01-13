@@ -10,6 +10,7 @@ import * as loginController from './controllers/loginController.js'
 import * as productController from './controllers/productController.js'
 import * as sessionManager from './config/sessionManager.js'
 
+import * as jwtAuth from './config/jwtAuth.js'
 import upload from './config/uploadConfig.js';
 import i18n from './config/i18nConfig.js';
 import * as langController from './controllers/langController.js'
@@ -39,11 +40,11 @@ app.use(cookieParser())   // cookie parser to get cookies from client
 app.use(express.static(join(import.meta.dirname, 'public')))    // set the folder where statis resources will be served
 
 // API ROUTES //CRUD for products resource
-app.get('/api/products', apiPorductController.apiProductGetList)
-app.get('/api/products/:productId', apiPorductController.apiProductGetOne) //solo un producto por _id
-app.post('/api/products', upload.single('Image'), apiPorductController.apiCreateNewProduct)
-app.put('/api/products/:productId',upload.single('Image'), apiPorductController.apiProductUpdate)
-app.delete('/api/products/:productId', apiPorductController.apiProductDelete)
+app.get('/api/products', jwtAuth.guard, apiPorductController.apiProductGetList)
+app.get('/api/products/:productId', jwtAuth.guard, apiPorductController.apiProductGetOne) //solo un producto por _id
+app.post('/api/products', jwtAuth.guard, upload.single('Image'), apiPorductController.apiCreateNewProduct)
+app.put('/api/products/:productId', jwtAuth.guard, upload.single('Image'), apiPorductController.apiProductUpdate)
+app.delete('/api/products/:productId', jwtAuth.guard, apiPorductController.apiProductDelete)
 // API LOGIN CRUD
 app.post('/api/login', apiLoginCOntroller.loginJWT)
 
