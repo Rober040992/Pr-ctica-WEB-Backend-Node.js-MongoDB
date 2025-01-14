@@ -1,4 +1,5 @@
 import Product from "../../models/Product.js"
+import createError from 'http-errors'
 // iportamos el modelo del producto
 //      API CRUD METHODS
 
@@ -94,7 +95,20 @@ export async function apiProductUpdate(req, res, next) {
 export async function apiProductDelete(req, res, next) {
     try {
          //recogemos del los parametros de la ruta
+         const apiUserId = req.apiUserID
          const productId = req.params.productId
+          
+        const product = await Product.findOne({ _id: productId }) //validar que el producto existe
+        if (!product) {
+            console.warn(`WARNING - el usuario ${apiUserId} está intentando eliminar un producto inexistente`)
+            return next(createError(404))
+        }
+        
+        if (product.owner.toString() !== apiUserId) { //validar que le pertenece
+            console.warn(`WARNING - el usuario ${apiUserId} está intentando eliminar un producto de otro usuario`)
+            return next(createError(401))
+        }
+
          // buscamos el product en la DB pasandole el filtro de el que vamos a borrar
          await Product.deleteOne({ _id: productId })
 

@@ -52,7 +52,7 @@ export async function deleteProduct(req, res, next) {
     }
     //verificar que el owner coincide con el userId , si no lanzo un warn
     if (product.owner.toString() !== userId) {
-        console.warn(`WARNING - el usuario ${userId} está intentando eliminar un agente de otro usuario`)
+        console.warn(`WARNING - el usuario ${userId} está intentando eliminar un producto de otro usuario`)
         return next(createError(401, 'Not authorized'))
     }
 
