@@ -44,10 +44,11 @@ export async function apiProductGetList(req, res, next){
 
 export async function apiProductGetOne(req, res, next) {
     try {
+        const apiUserId = req.apiUserID
         //obtenemos la peticion del los parametros de la ruta
         const productId = req.params.productId
-        // buscamos el product en la base de datos
-        const product = await Product.findById(productId)
+        // buscamos el product en la base de datos filtrado
+        const product = await Product.findOne({ _id: productId, owner: apiUserId })
         // devolvemos un objeto en forma de json
         res.json({ result: product })
     } catch (error) {
