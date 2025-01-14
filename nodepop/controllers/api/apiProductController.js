@@ -4,10 +4,12 @@ import Product from "../../models/Product.js"
 
 export async function apiProductGetList(req, res, next){
     try{
+        const apiUserId = req.apiUserID
         const limit = parseInt(req.query.limit) // || 5 para que aparezcan directamente un max de 5 productos
         const skip = parseInt(req.query.skip) || 0 //ejm: http://localhost:5555/api/products/?limit=3&skip=3
         const fields = req.query.fields //http://localhost:5555/api/products/?fields=name
-        const filter = { }
+        const filter = { owner: apiUserId} // pasandole este filtro directamente solo nos da los productos propiedad del user
+        
         if (req.query.minPrice || req.query.maxPrice) { //verificamos que existan en la query
             filter.price = {}; //iniciamos campo price
             if (req.query.minPrice) {

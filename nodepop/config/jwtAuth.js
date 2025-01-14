@@ -15,6 +15,7 @@ export function guard (req, res, next) {
             next(createError(401, 'Invalid Token JWT 🆘'))
         return
         }
+        req.apiUserID = payload._id // creamos apiUserId para guardar el __id del usuario logeado en la request para poder leerlo en lo siguientes middleware
         next() // si es valido lo dejo pasar  
     } )
 
