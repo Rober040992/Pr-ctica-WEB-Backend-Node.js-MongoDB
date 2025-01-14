@@ -79,11 +79,12 @@ export async function apiCreateNewProduct(req, res, next) {
 export async function apiProductUpdate(req, res, next) {
     try {
         //recogemos datos de entrara
+        const apiUserId = req.apiUserID
         const productId = req.params.productId
         const productData = req.body
         productData.Image = req.file?.filename //le asignamos el file?
         //actualizar:
-        const updatedProduct = await Product.findByIdAndUpdate(productId, productData, { new: true }) //new:true para obtener el doc updated
+        const updatedProduct = await Product.findOneAndUpdate({ _id: productId, owner: apiUserId }, productData, { new: true }) //new:true para obtener el doc updated
         res.json({ result: updatedProduct })
     } catch (error) {
         next(error)
