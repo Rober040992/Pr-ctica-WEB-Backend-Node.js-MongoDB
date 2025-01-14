@@ -58,10 +58,12 @@ export async function apiProductGetOne(req, res, next) {
 
 export async function apiCreateNewProduct(req, res, next) {
     try {
+        const apiUserId = req.apiUserID
         // obtenemos los datos del form del body
         const productBodyData = req.body
         //creando instancia del producto en memoria y le pasamos el body del newProduct
         const newProduct = new Product(productBodyData)
+        newProduct.owner = apiUserId //para decirle quien es el propietario
         //le asignamos la propiedad image (opcional)
         newProduct.Image = req.file?.filename
 
