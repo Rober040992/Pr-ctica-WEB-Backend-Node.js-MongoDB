@@ -60,7 +60,7 @@ Nodepop es una aplicación web para la compra y venta de artículos de segunda m
 - Eliminacion de un producto unico por su _id metodo. Delete /api/products/:productId
 - Actualizacion de un producto por _id. metodo Put /api/products:productId
 
-## otros carazteristicas
+## Otras Carazteristicas
 - Paginacion manual introduciendo el limit&skip manualmente ejm: products/?limit=5&skip=0
 - Filtro por precio MAX ejm: /?maxPrice=20 o MIN ejm /?minPrice=20
 - Busqueda por nombre /?name=ejemplo
